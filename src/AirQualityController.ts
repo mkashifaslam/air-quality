@@ -1,8 +1,10 @@
 import { Controller, Get, Logger, Param } from "@nestjs/common";
 import { AirQualityService } from "./services/AirQualityService";
 import { Result } from "./models/Result";
+import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 
-@Controller()
+@ApiTags("Air-Quality")
+@Controller("air-quality")
 export class AirQualityController {
   private readonly logger = new Logger(AirQualityController.name);
 
@@ -10,6 +12,26 @@ export class AirQualityController {
   }
 
   @Get("nearestCityAirQuality/:lat/:lng")
+  @ApiOperation({ summary: "Get air-quality of nearest city of given lat, lng" })
+  @ApiResponse({
+    status: 200,
+    description: "Success response",
+    schema: {
+      example: {
+        Result: {
+          Pollution: {
+            ts: "2023-09-08T03:00:00.000Z",
+            aqius: 76,
+            mainus: "p2",
+            aqicn: 46,
+            maincn: "p1"
+          }
+        }
+      }
+    }
+  })
+  @ApiResponse({ status: 400, description: "Bad request" })
+  @ApiResponse({ status: 500, description: "Internal server error" })
   async getNearestAirQuality(
     @Param("lat") lat: number,
     @Param("lng") lng: number): Promise<{ Result: Result }> {

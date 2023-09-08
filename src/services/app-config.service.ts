@@ -21,4 +21,12 @@ export class AppConfigService {
   get API_KEY(): string {
     return this.configService.get<string>("API_KEY");
   }
+
+  get API_PREFIX(): string {
+    return this.configService.get<string>("API_PREFIX") ?? "api";
+  }
+
+  get APP_VERSION(): string {
+    return this.configService.get<string>("APP_VERSION") ?? "1";
+  }
 }
