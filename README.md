@@ -32,7 +32,7 @@ $ npm run start
 
 ## Open API Swagger Docs
 
-- open <a href="http://localhost:3008/api" target="blank"> http://localhost:3008/api </a> in your browser
+- open <a href="http://localhost:3000/api" target="blank"> http://localhost:3000/api </a> in your browser
 
 ## Test
 
