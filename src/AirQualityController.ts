@@ -33,7 +33,7 @@ export class AirQualityController {
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
-  async getNearestAirQuality(
+  getNearestAirQuality(
     @Param('lat') lat: number,
     @Param('lng') lng: number,
   ): Promise<{ Result: Result }> {
@@ -41,7 +41,7 @@ export class AirQualityController {
     return this.airQualityService.getNearestAirQuality(lat, lng);
   }
 
-  @Get('getTimeWithMostPollutedParisZone')
+  @Get('getMostPollutedParisZoneTime')
   @ApiOperation({
     summary: 'Get time of most polluted air-quality of Paris zone',
   })
@@ -56,7 +56,7 @@ export class AirQualityController {
   })
   @ApiResponse({ status: 400, description: 'Bad request' })
   @ApiResponse({ status: 500, description: 'Internal server error' })
-  async getTimeWithMostPollutedParisZone() {
-    return this.airQualityService.getTimeWithMostPollutedParisZone();
+  getMostPollutedParisZoneTime() {
+    return this.airQualityService.getMostPollutedParisZoneTime();
   }
 }

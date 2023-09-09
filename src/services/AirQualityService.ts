@@ -42,9 +42,7 @@ export class AirQualityService {
     }
   }
 
-  async createAirQuality(
-    data: Prisma.AirQualityCreateInput,
-  ): Promise<AirQuality> {
+  createAirQuality(data: Prisma.AirQualityCreateInput): Promise<AirQuality> {
     try {
       this.logger.log('Creating new record of air quality');
       return this.prisma.airQuality.create({
@@ -56,7 +54,7 @@ export class AirQualityService {
     }
   }
 
-  getTimeWithMostPollutedParisZone() {
+  getMostPollutedParisZoneTime(): Promise<{ ts: string }> {
     return this.prisma.airQuality.findFirst({
       select: {
         ts: true,
