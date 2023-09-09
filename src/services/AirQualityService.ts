@@ -55,4 +55,20 @@ export class AirQualityService {
       throw new HttpException(err.message, err.code);
     }
   }
+
+  getTimeWithMostPollutedParisZone() {
+    return this.prisma.airQuality.findFirst({
+      select: {
+        ts: true,
+      },
+      orderBy: [
+        {
+          aqius: 'desc',
+        },
+        {
+          aqicn: 'desc',
+        },
+      ],
+    });
+  }
 }

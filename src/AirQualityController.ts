@@ -40,4 +40,23 @@ export class AirQualityController {
     this.logger.log('lat & lng received');
     return this.airQualityService.getNearestAirQuality(lat, lng);
   }
+
+  @Get('getTimeWithMostPollutedParisZone')
+  @ApiOperation({
+    summary: 'Get time of most polluted air-quality of Paris zone',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Success response',
+    schema: {
+      example: {
+        ts: '2023-09-08T03:00:00.000Z',
+      },
+    },
+  })
+  @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
+  async getTimeWithMostPollutedParisZone() {
+    return this.airQualityService.getTimeWithMostPollutedParisZone();
+  }
 }
