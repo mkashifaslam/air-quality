@@ -4,7 +4,7 @@
 
 ## Description
 
-This is sample project to expose apis to get pollution data of nearest GPS coordinates city using iqair.
+This is sample project to expose apis to get pollution data of nearest GPS coordinates city using IQAir APIs.
 
 ## Installation
 
