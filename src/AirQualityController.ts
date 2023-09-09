@@ -1,41 +1,43 @@
-import { Controller, Get, Logger, Param } from "@nestjs/common";
-import { AirQualityService } from "./services/AirQualityService";
-import { Result } from "./models/Result";
-import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Controller, Get, Logger, Param } from '@nestjs/common';
+import { AirQualityService } from './services/AirQualityService';
+import { Result } from './models/Result';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags("Air-Quality")
-@Controller("air-quality")
+@ApiTags('Air-Quality')
+@Controller('air-quality')
 export class AirQualityController {
   private readonly logger = new Logger(AirQualityController.name);
 
-  constructor(private readonly airQualityService: AirQualityService) {
-  }
+  constructor(private readonly airQualityService: AirQualityService) {}
 
-  @Get("nearestCityAirQuality/:lat/:lng")
-  @ApiOperation({ summary: "Get air-quality of nearest city of given lat, lng" })
+  @Get('nearestCityAirQuality/:lat/:lng')
+  @ApiOperation({
+    summary: 'Get air-quality of nearest city of given lat, lng',
+  })
   @ApiResponse({
     status: 200,
-    description: "Success response",
+    description: 'Success response',
     schema: {
       example: {
         Result: {
           Pollution: {
-            ts: "2023-09-08T03:00:00.000Z",
+            ts: '2023-09-08T03:00:00.000Z',
             aqius: 76,
-            mainus: "p2",
+            mainus: 'p2',
             aqicn: 46,
-            maincn: "p1"
-          }
-        }
-      }
-    }
+            maincn: 'p1',
+          },
+        },
+      },
+    },
   })
-  @ApiResponse({ status: 400, description: "Bad request" })
-  @ApiResponse({ status: 500, description: "Internal server error" })
+  @ApiResponse({ status: 400, description: 'Bad request' })
+  @ApiResponse({ status: 500, description: 'Internal server error' })
   async getNearestAirQuality(
-    @Param("lat") lat: number,
-    @Param("lng") lng: number): Promise<{ Result: Result }> {
-    this.logger.log("lat & lng received");
+    @Param('lat') lat: number,
+    @Param('lng') lng: number,
+  ): Promise<{ Result: Result }> {
+    this.logger.log('lat & lng received');
     return this.airQualityService.getNearestAirQuality(lat, lng);
   }
 }

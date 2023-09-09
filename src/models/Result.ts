@@ -1,4 +1,4 @@
-import { Pollution } from "./Pollution";
+import { Pollution } from './Pollution';
 
 export interface Result {
   Pollution: Pollution;
