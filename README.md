@@ -4,7 +4,7 @@
 
 ## Description
 
-This is sample project to expose apis to get pollution data of nearest GPS coordinates city
+This is sample project to expose apis to get pollution data of nearest GPS coordinates city using iqair.
 
 ## Installation
 
@@ -12,9 +12,10 @@ This is sample project to expose apis to get pollution data of nearest GPS coord
 $ npm install
 ```
 
-## Run Prisma Migrations To Create Database Schema
+## Run Database Migrations
 
 - Create new mysql database with name "air_quality_db"
+- Update DATABASE_URL variable value according to your database connection string in .env file
 
 ```bash
 $ npx prisma migrate deploy
@@ -23,22 +24,16 @@ $ npx prisma migrate deploy
 ## Running the app
 
 ```bash
-# development
 $ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
+
+## Open API Swagger Docs
+
+- open <a href="http://localhost:3008/api" target="blank"> http://localhost:3008/api </a> in your browser
 
 ## Test
 
 ```bash
 # unit tests
 $ npm run test
-
-# test coverage
-$ npm run test:cov
 ```
