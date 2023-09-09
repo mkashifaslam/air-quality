@@ -6,6 +6,10 @@
 
 This is sample project to expose apis to get pollution data of nearest GPS coordinates city using IQAir APIs.
 
+## Rename .env.example file to .env
+
+Update .env file based on your configuration values
+
 ## Installation
 
 ```bash
@@ -15,7 +19,6 @@ $ npm install
 ## Run Database Migrations
 
 - Create new mysql database with name "air_quality_db"
-- Update DATABASE_URL variable value according to your database connection string in .env file
 
 ```bash
 $ npx prisma migrate deploy
